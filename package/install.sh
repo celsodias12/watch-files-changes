@@ -12,7 +12,7 @@ check_if_package_dependencies_installed() {
 
   for i in "${dependencies[@]}"; do
     if (! [ -x "$(command -v $i)" ]); then
-      echo "Error: $i is not installed"
+      echo "error: $i is not installed"
       exit 1
     fi
   done
