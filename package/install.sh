@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+readonly PACKAGE_NAME='watch-files-changes'
+readonly PACKAGE_INSTALL_PATH="/usr/local/bin/$PACKAGE_NAME"
+
 check_if_package_installed() {
-  if ([ -f /usr/local/bin/watch-files-changes ]); then
-    echo "package 'watch-files-changes' was installed"
+  if ([ -f $PACKAGE_INSTALL_PATH ]); then
+    echo "package '$PACKAGE_NAME' was installed"
     exit 1
   fi
 }
@@ -20,14 +23,13 @@ check_if_package_dependencies_installed() {
 }
 
 install_package() {
-  local readonly url_download_package="https://raw.githubusercontent.com/celsodias12/watch-files-changes/main/watch-files-changes.sh"
-  local readonly package_path="/usr/local/bin/watch-files-changes"
+  local readonly url_download_package="https://github.com/celsodias12/watch-files-changes/releases/download/1.0.0/watch-files-changes"
 
   sudo wget "$url_download_package"
 
-  sudo mv watch-files-changes.sh "$package_path"
+  sudo mv $PACKAGE_NAME "$PACKAGE_INSTALL_PATH"
 
-  sudo chmod +x "$package_path"
+  sudo chmod +x "$PACKAGE_INSTALL_PATH"
 }
 
 check_if_package_dependencies_installed &&
