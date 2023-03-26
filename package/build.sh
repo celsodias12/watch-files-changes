@@ -21,6 +21,8 @@ build() {
   if [ -f $package_filename.sh.x ]; then
     local readonly output_folder='./output'
 
+    rm -rf "$output_folder"
+
     if [ ! -d "$output_folder" ]; then
       mkdir "$output_folder"
     fi
