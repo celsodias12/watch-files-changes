@@ -1,21 +1,23 @@
 #!/usr/bin/env bash
 
+readonly PACKAGE_NAME='watch-files-changes'
+readonly PACKAGE_INSTALLED_PATH="/usr/local/bin/$PACKAGE_NAME"
+
 check_if_package_installed() {
-  if (! [ -f /usr/local/bin/watch-files-changes ]); then
-    echo "package 'watch-files-changes' was not installed"
+  if (! [ -f $PACKAGE_INSTALLED_PATH ]); then
+    echo "package '$PACKAGE_NAME' was not installed"
     exit 1
   fi
 }
 
 remove_package() {
-  local readonly package_path="/usr/local/bin/watch-files-changes"
 
-  sudo rm "$package_path"
+  sudo rm "$PACKAGE_INSTALLED_PATH"
 
-  if (! [ -f "$package_path" ]); then
-    echo "package 'watch-files-changes' was removed"
+  if (! [ -f "$PACKAGE_INSTALLED_PATH" ]); then
+    echo "package '$PACKAGE_NAME' was removed"
   else
-    echo "error removing package 'watch-files-changes'"
+    echo "error removing package '$PACKAGE_NAME'"
   fi
 }
 
