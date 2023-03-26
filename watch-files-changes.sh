@@ -32,7 +32,7 @@ validate_options() {
   fi
 
   if [ -z "$DIR_OR_PATH_TO_MONITOR" ]; then
-    messages+=('No pattern files to monitor was passed')
+    messages+=('No directory or file to monitor was passed')
   fi
 
   if [ ${#messages[@]} -gt 0 ]; then
