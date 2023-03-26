@@ -42,7 +42,7 @@ watch-files-changes -h
 Execute remove script:
 
 ```bash
-curl -SsL https://raw.githubusercontent.com/celsodias12/watch-files-changes/main/package/install.sh | bash
+curl -SsL https://raw.githubusercontent.com/celsodias12/watch-files-changes/main/package/remove.sh | bash
 ```
 
 ## Contributing
