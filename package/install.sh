@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+trap "exit" INT TERM ERR
+trap "kill 0" EXIT
+
+set -e
+
 readonly PACKAGE_NAME='watch-files-changes'
 readonly PACKAGE_INSTALL_PATH="/usr/local/bin/$PACKAGE_NAME"
 
@@ -14,7 +19,7 @@ check_if_package_dependencies_installed() {
   local readonly dependencies=('ls' 'base64' 'read' 'sleep' 'grep' 'wc')
 
   for i in "${dependencies[@]}"; do
-    if (! [ -x "$(command -v $i)" ]); then
+    if [ -z "$(command -v $i)" ]; then
       echo "error: $i is not installed"
       exit 1
     fi
