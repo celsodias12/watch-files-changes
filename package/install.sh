@@ -28,13 +28,18 @@ check_if_package_dependencies_installed() {
 }
 
 install_package() {
-  local readonly url_download_package="https://github.com/celsodias12/watch-files-changes/releases/download/1.0.0/watch-files-changes"
+  local readonly file_name="watch-files-changes.sh"
+  local readonly url_download_package="https://raw.githubusercontent.com/celsodias12/watch-files-changes/main/$file_name"
 
   sudo wget "$url_download_package"
+
+  sudo mv "$file_name" "$PACKAGE_NAME"
 
   sudo mv "$PACKAGE_NAME" "$PACKAGE_INSTALL_PATH"
 
   sudo chmod +x "$PACKAGE_INSTALL_PATH"
+
+  echo "package '$PACKAGE_NAME' installed successfully"
 }
 
 check_if_package_dependencies_installed &&
