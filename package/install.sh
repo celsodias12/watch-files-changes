@@ -32,7 +32,7 @@ install_package() {
 
   sudo wget "$url_download_package"
 
-  sudo mv $PACKAGE_NAME "$PACKAGE_INSTALL_PATH"
+  sudo mv "$PACKAGE_NAME" "$PACKAGE_INSTALL_PATH"
 
   sudo chmod +x "$PACKAGE_INSTALL_PATH"
 }
